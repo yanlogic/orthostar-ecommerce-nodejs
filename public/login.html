@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- 🆕 AGREGADO: descripción para SEO + accesibilidad (Lighthouse) -->
+  <meta name="description" content="Acceso administrativo al panel de Orthostar — distribuidora de insumos de ortodoncia.">
+
+  <!-- 🆕 AGREGADO: title más descriptivo (antes decía solo "Login") -->
+  <title>Login — Orthostar</title>
+
+  <!-- 🆕 AGREGADO: Bootstrap (rúbrica exige uso de Bootstrap) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+  <!-- ✅ YA TENÍAS: tu CSS propio -->
+  <link rel="stylesheet" href="styles/estilo.css">
+  <link rel="stylesheet" href="styles/modal.css">
+  <link rel="stylesheet" href="styles/login.css">
+</head>
+<body>
+
+  <!-- 🆕 CAMBIO: <main> en lugar de <div class="login-container"> -->
+  <!-- HTML semántico para nivel Avanzado de la rúbrica -->
+  <main class="login-container" role="main">
+
+    <!-- 🆕 CAMBIO: <header> para el logo (antes era todo en <div>) -->
+    <header>
+      <h1>ORTHOSTAR</h1>
+      <p class="subtitulo">ADMINISTRADOR</p>
+    </header>
+
+    <!-- 🆕 CAMBIO: <section> en lugar de <div class="login-box"> -->
+    <section class="login-box" aria-label="Formulario de acceso">
+
+      <!-- 🆕 AGREGADO: label asociado al input (accesibilidad) -->
+      <label for="inputUsuario" class="visually-hidden">Usuario</label>
+      <input
+        type="text"
+        id="inputUsuario"
+        placeholder="Usuario"
+        aria-label="Ingresa tu usuario"
+        autocomplete="username"
+      >
+
+      <label for="inputClave" class="visually-hidden">Contraseña</label>
+      <input
+        type="password"
+        id="inputClave"
+        placeholder="Contraseña"
+        aria-label="Ingresa tu contraseña"
+        autocomplete="current-password"
+      >
+
+      <!-- 🆕 AGREGADO: mensaje de error con role alert (accesibilidad) -->
+      <p id="mensajeError" role="alert" aria-live="polite" style="display:none;">
+        Usuario o contraseña incorrectos.
+      </p>
+
+      <!-- ✅ YA TENÍAS: los botones — solo agregué id y aria-label -->
+      <button id="btnContinuar" aria-label="Ingresar al panel">Continuar</button>
+      <button id="btnVolver"    aria-label="Volver a la tienda">Volver a Tienda</button>
+
+    </section>
+
+  </main>
+
+  <!-- 🆕 AGREGADO: JS separado del HTML (buenas prácticas) -->
+  <script src="js/login.js"></script>
+
+
+  <!-- MODAL PERSONALIZADO (reemplaza alert/confirm) -->
+</div>
+
+  <script src="js/modal.js"></script>
+</body>
+</html>

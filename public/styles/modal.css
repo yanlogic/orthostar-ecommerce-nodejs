@@ -1,0 +1,165 @@
+/* =============================================
+   MODAL.CSS — Alertas y confirmaciones
+   Orthostar
+   ============================================= */
+
+/* Overlay — oculto por defecto */
+#orthoOverlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 9000;
+}
+
+/* Overlay activo */
+#orthoOverlay.activo {
+  display: block;
+}
+
+/* Modal — oculto por defecto */
+#orthoModal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9001;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* Modal activo */
+#orthoModal.activo {
+  display: flex;
+}
+
+/* Caja blanca */
+#orthoModalInner {
+  background: white;
+  border-radius: 16px;
+  padding: 28px 24px 22px 24px;
+  max-width: 340px;
+  width: 100%;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Mensaje */
+#modalMensaje {
+  font-size: 14px;
+  color: #222;
+  line-height: 1.55;
+  margin: 0 0 22px 0;
+  text-align: center;
+}
+
+/* Fila de botones */
+#modalBotones {
+  display: flex;
+  gap: 10px;
+}
+
+/* Botón Aceptar */
+#modalBtnAceptar {
+  flex: 1;
+  padding: 11px;
+  background: black;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 0;
+  transition: opacity 0.2s;
+  font-family: inherit;
+}
+#modalBtnAceptar:hover { opacity: 0.85; }
+
+/* Botón Cancelar — oculto por defecto */
+#modalBtnCancelar {
+  display: none;
+  flex: 1;
+  padding: 11px;
+  background: white;
+  color: #333;
+  border: 1.5px solid #ddd;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 0;
+  transition: background 0.2s;
+  font-family: inherit;
+}
+#modalBtnCancelar:hover { background: #f5f5f5; }
+
+/* Animación pop-in sutil */
+@keyframes modalPopIn {
+  0%   { opacity: 0; transform: scale(0.88); }
+  100% { opacity: 1; transform: scale(1);    }
+}
+
+/* =============================================
+   LIGHTBOX de banners/ofertas
+   ============================================= */
+
+#lightboxOverlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 9100;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  cursor: zoom-out;
+}
+
+#lightboxOverlay.activo {
+  display: flex;
+}
+
+#lightboxImg {
+  max-width: min(90vw, 1200px);
+  max-height: 80vh;
+  width: auto;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+  object-fit: contain;
+  cursor: default;
+  animation: lightboxIn 0.22s ease;
+}
+
+@keyframes lightboxIn {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+#lightboxClose {
+  position: fixed;
+  top: 16px;
+  right: 20px;
+  background: rgba(255,255,255,0.15);
+  border: none;
+  color: white;
+  font-size: 28px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  padding: 0;
+  margin: 0;
+  transition: background 0.2s;
+  z-index: 9101;
+}
+#lightboxClose:hover { background: rgba(255,255,255,0.3); }

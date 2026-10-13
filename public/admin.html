@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Panel administrativo de Orthostar.">
+  <title>Dashboard — Orthostar</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles/estilo.css">
+  <link rel="stylesheet" href="styles/modal.css">
+  <link rel="stylesheet" href="styles/admin.css">
+</head>
+<body>
+
+  <!-- MENÚ LATERAL -->
+  <nav id="menuLateral" class="menu-lateral" aria-label="Menú del administrador">
+    <div class="menu-lateral-header">
+      <button onclick="toggleMenu()" aria-label="Cerrar menú">✖</button>
+    </div>
+    <a href="#" onclick="cerrarSesion()">Cerrar sesión</a>
+  </nav>
+
+  <main class="dash-container" role="main">
+
+    <!-- HEADER -->
+    <header class="dash-header">
+      <button class="btn-hamburguesa" onclick="toggleMenu()" aria-label="Abrir menú">☰</button>
+      <h1>DASHBOARD</h1>
+      <div class="dash-avatar" aria-hidden="true">👤</div>
+    </header>
+
+    <!-- TABS -->
+    <nav class="dash-tabs" aria-label="Secciones del dashboard">
+      <button id="tabOfertas"   onclick="cambiarTab('ofertas')"   aria-label="Ofertas">Ofertas</button>
+      <button id="tabMarcas"    onclick="cambiarTab('marcas')"    aria-label="Marcas">Marcas</button>
+      <button id="tabProductos" onclick="cambiarTab('productos')" class="active" aria-label="Productos">Productos</button>
+    </nav>
+
+
+    <!-- ═══════════════════════════════════════
+         SECCIÓN PRODUCTOS
+    ═══════════════════════════════════════ -->
+    <section id="secProductos" aria-label="Gestión de productos">
+
+      <!-- Vista A: formulario + lista de marcas -->
+      <div id="vistaFormProductos">
+
+        <!-- Card: Nombre -->
+        <div class="dash-card">
+          <label class="dash-card-label" for="prodNombre">Nombre</label>
+          <input type="text" id="prodNombre" class="dash-input" placeholder="Ingrese el nombre del producto." aria-label="Nombre del producto">
+        </div>
+
+        <!-- Card: Descripción -->
+        <div class="dash-card">
+          <label class="dash-card-label" for="prodDescripcion">Descripción</label>
+          <input type="text" id="prodDescripcion" class="dash-input" placeholder="Agregue una breve descripción." aria-label="Descripción">
+        </div>
+
+        <!-- Card: Precio + Cantidad -->
+        <div class="dash-fila-dos">
+          <div class="dash-card flex-1">
+            <label class="dash-card-label" for="prodPrecio">Precio</label>
+            <input type="number" id="prodPrecio" class="dash-input" placeholder="S/0.00" min="0" step="0.01" aria-label="Precio">
+          </div>
+          <div class="dash-card flex-1">
+            <label class="dash-card-label">Cantidad</label>
+            <div class="stepper-dash">
+              <button onclick="ajustarCantidadProd(-1)" aria-label="Reducir">−</button>
+              <span id="prodCantidad">0</span>
+              <button onclick="ajustarCantidadProd(1)"  aria-label="Aumentar">+</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card: Marca + Categoría en fila -->
+        <div class="dash-fila-dos">
+          <div class="dash-card flex-1">
+            <label class="dash-card-label" for="prodMarca">Marca</label>
+            <select id="prodMarca" class="dash-select" aria-label="Seleccionar marca">
+              <option value="">Seleccionar marca</option>
+              <option value="Morelli">Morelli</option>
+              <option value="Orthometric">Orthometric</option>
+              <option value="Bestpli">Bestpli</option>
+              <option value="BGS">BGS</option>
+            </select>
+          </div>
+          <div class="dash-card flex-1">
+            <label class="dash-card-label" for="prodCategoria">Categoría</label>
+            <select id="prodCategoria" class="dash-select" aria-label="Seleccionar categoría">
+              <option value="Brackets">Brackets</option>
+              <option value="Tubos">Tubos</option>
+              <option value="Arcos">Arcos</option>
+              <option value="Alicates">Alicates</option>
+              <option value="Bandas">Bandas</option>
+              <option value="Equipos">Equipos</option>
+              <option value="Rayos-x">Rayos-x</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Card: Imagen -->
+        <div class="dash-card">
+          <label class="dash-card-label">Imagen</label>
+          <label class="upload-area" for="prodImagen" aria-label="Subir imagen del producto">
+            <span class="upload-icono" aria-hidden="true">⬆</span>
+            <span>Subir imagen del producto</span>
+            <input type="file" id="prodImagen" accept="image/*" style="display:none" aria-label="Seleccionar imagen">
+          </label>
+          <p class="upload-hint">Imagen cuadrada recomendada · mín. 400×400 px · máx. 800×800 px</p>
+          <img id="prodPreview" class="img-preview d-none" alt="Vista previa del producto">
+        </div>
+
+        <button class="btn-dash-primary" onclick="agregarProducto()" aria-label="Agregar producto">
+          Agregar producto
+        </button>
+
+        <h2 class="dash-subtitulo">Consultar productos:</h2>
+
+        <ul class="dash-lista-marcas" id="dash-lista-marcas-ul" aria-label="Marcas para consultar productos">
+          <li onclick="abrirMarca('Morelli')">Morelli <span>Productos: <span id="cnt-Morelli">3</span> ›</span></li>
+          <li onclick="abrirMarca('Orthometric')">Orthometric <span>Productos: <span id="cnt-Orthometric">2</span> ›</span></li>
+          <li onclick="abrirMarca('Bestpli')">Bestpli <span>Productos: <span id="cnt-Bestpli">2</span> ›</span></li>
+          <li onclick="abrirMarca('BGS')">BGS <span>Productos: <span id="cnt-BGS">2</span> ›</span></li>
+        </ul>
+
+      </div>
+
+      <!-- Vista B: lista de productos por marca -->
+      <div id="vistaListaProductos" style="display:none;">
+
+        <div class="dash-vista-header">
+          <button onclick="volverFormProductos()" class="btn-volver-dash" aria-label="Volver">
+            <span aria-hidden="true">←</span>
+          </button>
+          <span id="marcaActivaNombre">Morelli</span>
+          <span id="marcaActivaTotal" class="dash-total-txt">Productos: 0</span>
+        </div>
+
+        <ul id="listaProductosMarca" class="lista-productos-marca" aria-label="Lista de productos">
+          <!-- el JS pinta aquí -->
+        </ul>
+
+      </div>
+
+    </section>
+
+
+    <!-- ═══════════════════════════════════════
+         SECCIÓN OFERTAS
+    ═══════════════════════════════════════ -->
+    <section id="secOfertas" style="display:none;" aria-label="Gestión de banners">
+
+      <!-- Card: Imagen banner -->
+      <div class="dash-card">
+        <label class="dash-card-label">Imagen</label>
+        <label class="upload-area" for="bannerImagen" aria-label="Subir imagen del banner">
+          <span class="upload-icono" aria-hidden="true">⬆</span>
+          <span>Subir imagen del banner</span>
+          <input type="file" id="bannerImagen" accept="image/*" style="display:none" aria-label="Seleccionar imagen del banner">
+        </label>
+        <p class="banner-dimensiones">Dimensiones recomendadas: 800 × 300 px. Si no se respetan, la imagen se verá recortada.</p>
+        <img id="bannerPreview" class="img-preview d-none" alt="Vista previa del banner">
+      </div>
+
+      <!-- Duración -->
+      <p class="dash-subtitulo">Duración del banner</p>
+
+      <div class="dash-card">
+        <label class="dash-card-label">De:</label>
+        <div class="fecha-row">
+          <select id="diaInicio" aria-label="Día inicio"><option>01</option><option>02</option><option>03</option><option>04</option><option>05</option><option>06</option><option>07</option><option>08</option><option>09</option><option>10</option><option>11</option><option>12</option><option>13</option><option>14</option><option>15</option><option>16</option><option>17</option><option>18</option><option>19</option><option>20</option><option>21</option><option>22</option><option>23</option><option>24</option><option>25</option><option>26</option><option>27</option><option>28</option><option>29</option><option>30</option><option>31</option></select>
+          <select id="mesInicio" aria-label="Mes inicio"><option>Ene</option><option>Feb</option><option>Mar</option><option>Abr</option><option>May</option><option>Jun</option><option>Jul</option><option>Ago</option><option>Sep</option><option>Oct</option><option>Nov</option><option>Dic</option></select>
+          <select id="anioInicio" aria-label="Año inicio"><option>2025</option><option>2026</option></select>
+        </div>
+      </div>
+
+      <div class="dash-card">
+        <label class="dash-card-label">Hasta:</label>
+        <div class="fecha-row">
+          <select id="diaFin" aria-label="Día fin"><option>01</option><option>02</option><option>03</option><option>04</option><option>05</option><option>06</option><option>07</option><option>08</option><option>09</option><option>10</option><option>11</option><option>12</option><option>13</option><option>14</option><option>15</option><option>16</option><option>17</option><option>18</option><option>19</option><option>20</option><option>21</option><option>22</option><option>23</option><option>24</option><option>25</option><option>26</option><option>27</option><option>28</option><option>29</option><option>30</option><option>31</option></select>
+          <select id="mesFin" aria-label="Mes fin"><option>Ene</option><option>Feb</option><option>Mar</option><option>Abr</option><option>May</option><option>Jun</option><option>Jul</option><option>Ago</option><option>Sep</option><option>Oct</option><option>Nov</option><option>Dic</option></select>
+          <select id="anioFin" aria-label="Año fin"><option>2025</option><option>2026</option></select>
+        </div>
+      </div>
+
+      <button class="btn-dash-primary" onclick="agregarBanner()" aria-label="Agregar banner">
+        Agregar banner
+      </button>
+
+      <h2 class="dash-subtitulo">Banners</h2>
+      <div id="listadoBanners"></div>
+
+    </section>
+
+
+    <!-- ═══════════════════════════════════════
+         SECCIÓN MARCAS
+    ═══════════════════════════════════════ -->
+    <section id="secMarcas" style="display:none;" aria-label="Gestión de marcas">
+
+      <!-- Card: Imagen marca -->
+      <div class="dash-card">
+        <label class="dash-card-label">Imagen</label>
+        <label class="upload-area" for="marcaImagen" aria-label="Subir imagen de la marca">
+          <span class="upload-icono" aria-hidden="true">⬆</span>
+          <span>Subir imagen de la marca</span>
+          <input type="file" id="marcaImagen" accept="image/*" style="display:none" aria-label="Seleccionar imagen de la marca">
+        </label>
+        <p class="upload-hint">Imagen cuadrada recomendada · mín. 150×150 px</p>
+        <img id="marcaPreview" class="img-preview d-none" alt="Vista previa de la marca">
+      </div>
+
+      <!-- Card: Nombre marca -->
+      <div class="dash-card">
+        <label class="dash-card-label" for="marcaNombre">Nombre</label>
+        <input type="text" id="marcaNombre" class="dash-input" placeholder="Ingrese el nombre de la marca." aria-label="Nombre de la marca">
+      </div>
+
+      <button class="btn-dash-primary" onclick="agregarMarca()" aria-label="Agregar marca">
+        Agregar marca
+      </button>
+
+      <h2 class="dash-subtitulo">Consultar marcas</h2>
+      <div id="listadoMarcas"></div>
+
+    </section>
+
+  </main>
+
+  <script src="js/libreria.js"></script>
+  <script src="js/admin.js"></script>
+
+
+  <!-- MODAL PERSONALIZADO (reemplaza alert/confirm) -->
+</div>
+
+  <script src="js/modal.js"></script>
+</body>
+</html>

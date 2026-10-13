@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Pantalla de pago de Orthostar.">
+  <title>Pantalla de pago — Orthostar</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles/estilo.css">
+  <link rel="stylesheet" href="styles/modal.css">
+  <link rel="stylesheet" href="styles/checkout.css">
+</head>
+<body>
+
+  <!-- NAVBAR con flecha volver y título centrado -->
+  <header class="navbar-producto" role="banner">
+    <button class="btn-back" onclick="history.back()" aria-label="Volver atrás">
+      <span aria-hidden="true">‹</span>
+    </button>
+    <h1>Pantalla de pago</h1>
+  </header>
+
+  <main role="main">
+
+    <!-- DATOS DE ENVÍO -->
+    <section class="datos-envio" aria-label="Datos de envío y contacto">
+
+      <div class="campo-pago">
+        <label class="campo-label" for="direccionEnvio">ENVÍO</label>
+        <input
+          type="text"
+          id="direccionEnvio"
+          class="campo-input"
+          placeholder="Agregar dirección de envío"
+          aria-label="Dirección de envío"
+        >
+      </div>
+
+      <!-- 🆕 ENTREGA dinámica (se actualiza según el total) -->
+      <div class="campo-pago">
+        <span class="campo-label">ENTREGA</span>
+        <div class="campo-valor-multi" id="entregaInfo">
+          <!-- el JS pinta el texto aquí -->
+        </div>
+      </div>
+
+      <div class="campo-pago">
+        <label class="campo-label" for="telefono">TELÉFONO</label>
+        <input
+          type="tel"
+          id="telefono"
+          class="campo-input"
+          placeholder="Ej: 999 999 999"
+          aria-label="Número de teléfono"
+        >
+      </div>
+
+      <div class="campo-pago">
+        <label class="campo-label" for="correo">CORREO</label>
+        <input
+          type="email"
+          id="correo"
+          class="campo-input"
+          placeholder="ejemplo@correo.com"
+          aria-label="Correo electrónico"
+        >
+      </div>
+
+      <div class="campo-pago">
+        <label class="campo-label" for="metodoPago">MÉTODO<br>DE PAGO</label>
+        <select id="metodoPago" class="campo-input" aria-label="Selecciona el método de pago">
+          <option value="">Seleccionar</option>
+          <option value="Efectivo">Efectivo</option>
+          <option value="Transferencia">Transferencia</option>
+          <option value="Tarjeta">Tarjeta</option>
+          <option value="Yape">Yape</option>
+          <option value="Coordinar con asesor">Coordinar con asesor</option>
+        </select>
+      </div>
+
+    </section>
+
+    <!-- RESUMEN -->
+    <section class="resumen-articulos" aria-label="Resumen de artículos">
+
+      <div class="resumen-header">
+        <span>ARTÍCULOS</span>
+        <span>DESCRIPCIÓN</span>
+        <span>PRECIO</span>
+      </div>
+
+      <div id="listadoCheckout">
+        <!-- el JS pinta aquí -->
+      </div>
+
+    </section>
+
+    <!-- TOTALES -->
+    <section class="totales" aria-label="Totales del pedido">
+      <div class="total-fila">
+        <span>Subtotal (<span id="totalItems">0</span>)</span>
+        <strong id="subtotal">S/0.00</strong>
+      </div>
+      <div class="total-fila">
+        <span>Total de envío</span>
+        <strong id="costoEnvio">Gratis</strong>
+      </div>
+      <div class="total-fila total-final">
+        <span>Total</span>
+        <strong id="totalFinal">S/0.00</strong>
+      </div>
+    </section>
+
+    <button class="btn-pago" onclick="realizarPago()" aria-label="Realizar pago">
+      REALIZAR PAGO
+    </button>
+
+  </main>
+
+  <script src="js/libreria.js"></script>
+  <script src="js/checkout.js"></script>
+
+
+  <!-- MODAL PERSONALIZADO (reemplaza alert/confirm) -->
+</div>
+
+  <script src="js/modal.js"></script>
+</body>
+</html>

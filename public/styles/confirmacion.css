@@ -1,0 +1,167 @@
+/* =============================================
+   CONFIRMACION.CSS — Pedido realizado
+   ============================================= */
+
+
+body {
+  background: white;
+  display: block;
+  padding: 0;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+/* Sección de éxito centrada */
+.confirmacion-exito {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px 25px 30px 25px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+
+.icono-check {
+  width: 90px;
+  height: 90px;
+  color: black;
+  margin-bottom: 20px;
+}
+
+.icono-check svg {
+  width: 100%;
+  height: 100%;
+}
+
+
+.confirmacion-exito h2 {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 25px 0;
+}
+
+.numero-pedido {
+  font-size: 13px;
+  color: #555;
+  margin: 0 0 20px 0;
+}
+
+.numero-pedido strong {
+  color: #888;
+  font-weight: 600;
+}
+
+
+.caja-whatsapp {
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 14px 20px;
+  font-size: 12px;
+  color: #555;
+  margin: 0 0 25px 0;
+  width: 100%;
+  max-width: 320px;
+  text-align: center;
+  line-height: 1.5;
+}
+
+
+.btn-volver-tienda {
+  background: black;
+  color: white;
+  border: none;
+  width: 100%;
+  max-width: 320px;
+  padding: 16px;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  margin: 0;
+}
+
+
+/* Productos similares */
+.productos-similares {
+  padding: 25px 20px;
+}
+
+.productos-similares h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 15px 0;
+}
+
+.similares-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.similar-grid-item {
+  cursor: pointer;
+}
+
+.similar-grid-item img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 12px;
+  background: #f0f0f0;
+}
+
+.similar-grid-item p {
+  margin: 4px 0;
+  font-size: 12px;
+}
+
+.similar-grid-item .s-marca {
+  color: #888;
+  font-size: 10px;
+  margin-top: 6px;
+}
+
+.similar-grid-item .s-precio {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+
+/* Móvil grande / tablet pequeña */
+@media (min-width: 600px) and (max-width: 767px) {
+  body { max-width: 600px; }
+  .confirmacion-wrapper { max-width: 560px; }
+}
+
+/* Tablet / Desktop */
+@media (min-width: 768px) and (max-width: 1023px) {
+  body { max-width: 900px; }
+  .confirmacion-wrapper { max-width: 860px; }
+
+  .similares-grid {
+    grid-template-columns: repeat(4, 160px);
+    gap: 16px;
+  }
+
+  .similar-grid-item img {
+    width: 160px;
+    height: 160px;
+  }
+}
+
+/* Desktop grande */
+@media (min-width: 1024px) {
+  body { max-width: 1100px; }
+  .confirmacion-wrapper { max-width: 1060px; }
+
+  .similares-grid {
+    grid-template-columns: repeat(6, 160px);
+    gap: 20px;
+  }
+
+  .similar-grid-item img {
+    width: 160px;
+    height: 160px;
+  }
+}

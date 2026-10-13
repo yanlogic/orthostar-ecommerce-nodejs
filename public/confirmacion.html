@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Confirmación de pedido en Orthostar.">
+  <title>Pedido realizado — Orthostar</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles/estilo.css">
+  <link rel="stylesheet" href="styles/modal.css">
+  <link rel="stylesheet" href="styles/confirmacion.css">
+</head>
+<body>
+
+  <!-- NAVBAR con flecha volver y título centrado -->
+  <header class="navbar-producto" role="banner">
+    <button class="btn-back" onclick="location.href='index.html'" aria-label="Volver atrás">
+      <span aria-hidden="true">‹</span>
+    </button>
+    <h1>Pedido realizado</h1>
+  </header>
+
+  <main role="main">
+
+    <section class="confirmacion-exito" aria-label="Confirmación de pedido exitoso">
+
+      <div class="icono-check" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="9 12 12 15 15 9"></polyline>
+        </svg>
+      </div>
+
+      <h2>Pedido recibido con éxito</h2>
+
+      <p class="numero-pedido">
+        Número del pedido: <strong id="numeroPedido">#00001</strong>
+      </p>
+
+      <div class="caja-whatsapp">
+        Un asesor de Orthostar se comunicará contigo por WhatsApp para coordinar precios y entrega.
+      </div>
+
+      <button class="btn-volver-tienda" onclick="location.href='index.html'" aria-label="Volver a la tienda">
+        Volver a Tienda
+      </button>
+
+    </section>
+
+    <section class="productos-similares" aria-label="Productos similares">
+      <h3>Productos similares</h3>
+      <div id="similaresGrid" class="similares-grid">
+        <!-- el JS pinta aquí -->
+      </div>
+    </section>
+
+  </main>
+
+  <script src="js/libreria.js"></script>
+  <script src="js/confirmacion.js"></script>
+
+
+  <!-- MODAL PERSONALIZADO (reemplaza alert/confirm) -->
+</div>
+
+  <script src="js/modal.js"></script>
+</body>
+</html>

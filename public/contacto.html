@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Chat de soporte de Orthostar — distribuidora de insumos de ortodoncia.">
+  <title>Contacto — Orthostar</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles/estilo.css">
+  <link rel="stylesheet" href="styles/modal.css">
+  <link rel="stylesheet" href="styles/contacto.css">
+</head>
+<body>
+
+  <!-- HEADER del chat -->
+  <header class="chat-header" role="banner">
+
+    <button class="btn-back" onclick="history.back()" aria-label="Volver atrás">
+      <span aria-hidden="true">‹</span>
+    </button>
+
+    <div class="chat-header-info">
+      <div class="chat-avatar" aria-hidden="true">
+        <img src="assets/images/logo.png" alt="Orthostar" onerror="this.style.display='none'">
+        <span class="avatar-fallback">O</span>
+      </div>
+      <div class="chat-header-texto">
+        <strong>Orthostar — Soporte</strong>
+        <span class="chat-estado">Activo ahora</span>
+      </div>
+    </div>
+
+    <button class="btn-info" aria-label="Información del contacto">
+      <span aria-hidden="true">ℹ</span>
+    </button>
+
+  </header>
+
+  <!-- ÁREA DE MENSAJES -->
+  <main class="chat-mensajes" id="chatMensajes" role="log" aria-live="polite" aria-label="Conversación con el soporte">
+    <!-- el JS pinta los mensajes aquí -->
+  </main>
+
+  <!-- INPUT DEL MENSAJE -->
+  <footer class="chat-footer" role="contentinfo">
+    <input
+      type="text"
+      id="inputMensaje"
+      class="chat-input"
+      placeholder="Mensaje..."
+      aria-label="Escribe un mensaje"
+    >
+    <button class="btn-enviar" onclick="enviarMensaje()" aria-label="Enviar mensaje">
+      <span aria-hidden="true">➤</span>
+    </button>
+  </footer>
+
+  <script src="js/libreria.js"></script>
+  <script src="js/contacto.js"></script>
+
+
+  <!-- MODAL PERSONALIZADO (reemplaza alert/confirm) -->
+</div>
+
+  <script src="js/modal.js"></script>
+</body>
+</html>

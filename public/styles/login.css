@@ -1,0 +1,79 @@
+/* =============================================
+   LOGIN.CSS — Estilos exclusivos del login
+   Orthostar — login.html
+   ============================================= */
+
+
+/* Body del login: centrado vertical
+   (sobreescribe el body de estilo.css solo en esta página) */
+body {
+  background: #f2f2f2;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+}
+
+
+/* 🆕 Contenedor del login */
+.login-container {
+  width: 100%;
+  max-width: 360px;
+  margin: 200px auto;
+  padding: 20px;
+  text-align: center;
+  background: white;
+  border-radius: 12px;
+}
+
+
+/* 🆕 Título ORTHOSTAR */
+.login-container h1 {
+  font-size: 24px;
+  letter-spacing: 3px;
+  margin: 40px 0 0 0;
+  font-weight: bold;
+}
+
+
+/* 🆕 Subtítulo "ADMINISTRADOR" */
+.login-container .subtitulo {
+  font-size: 13px;
+  color: #888;
+  margin: 8px 0 30px 0;
+  letter-spacing: 2px;
+}
+
+
+/* ✅ YA TENÍAS: caja del formulario */
+.login-box {
+  border: 1px dashed #ccc;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: left;
+}
+
+
+/* 🆕 Mensaje de error */
+#mensajeError {
+  color: red;
+  font-size: 13px;
+  margin: 8px 0;
+  text-align: center;
+}
+
+
+/* Móvil grande / tablet pequeña */
+@media (min-width: 600px) and (max-width: 767px) {
+  .login-container { max-width: 400px; }
+}
+
+/* Tablet / Desktop */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .login-container { max-width: 420px; }
+}
+
+/* Desktop grande */
+@media (min-width: 1024px) {
+  .login-container { max-width: 450px; }
+}

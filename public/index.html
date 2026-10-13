@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Orthostar — Tienda de insumos y materiales de ortodoncia en Lima, Perú.">
+  <title>Orthostar — Tienda de Ortodoncia</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles/estilo.css">
+  <link rel="stylesheet" href="styles/modal.css">
+  <link rel="stylesheet" href="styles/index.css">
+</head>
+<body>
+
+  <!-- 🆕 MENÚ LATERAL (deslizable) -->
+  <nav id="menuLateral" class="menu-lateral" aria-label="Menú principal">
+    <div class="menu-lateral-header">
+      <button onclick="toggleMenu()" aria-label="Cerrar menú">
+        <span aria-hidden="true">✖</span>
+      </button>
+    </div>
+    <a href="index.html">Inicio</a>
+    <a href="carrito.html">Carrito</a>
+    <a href="contacto.html">Contacto</a>
+    <a href="login.html">Login</a>
+  </nav>
+
+  <main class="home-wrapper" role="main">
+
+    <!-- ✅ CALEB: top bar con menú hamburguesa + buscador -->
+    <header class="top-bar" role="banner">
+      <button class="menu-btn" onclick="toggleMenu()" aria-label="Abrir menú">
+        <span aria-hidden="true">☰</span>
+      </button>
+
+      <!-- Logo de la empresa -->
+      <div class="logo-empresa">
+        <img src="assets/images/logo.png" alt="Logo Orthostar" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+        <div class="logo-placeholder" style="display:none;" aria-hidden="true">⭐</div>
+      </div>
+
+      <div class="cuadro-de-busqueda">
+        <span class="icono" aria-hidden="true">⌕</span>
+        <input
+          type="text"
+          id="inputBusqueda"
+          placeholder="Buscar"
+          aria-label="Buscar productos"
+        >
+      </div>
+    </header>
+
+    <!-- ✅ CALEB: categorías -->
+    <nav class="categorias" aria-label="Categorías de productos">
+      <button onclick="filtrarCategoria('Todos')"    class="cat-btn activa">Todos</button>
+      <button onclick="filtrarCategoria('Brackets')" class="cat-btn">Brackets</button>
+      <button onclick="filtrarCategoria('Tubos')"    class="cat-btn">Tubos</button>
+      <button onclick="filtrarCategoria('Arcos')"    class="cat-btn">Arcos</button>
+      <button onclick="filtrarCategoria('Alicates')" class="cat-btn">Alicates</button>
+      <button onclick="filtrarCategoria('Bandas')"   class="cat-btn">Bandas</button>
+      <button onclick="filtrarCategoria('Equipos')"  class="cat-btn">Equipos</button>
+      <button onclick="filtrarCategoria('Rayos-x')"    class="cat-btn">Rayos-x</button>
+    </nav>
+
+    <!-- ✅ CALEB: ofertas (carrusel) -->
+    <section class="ofertas" aria-label="Ofertas del mes">
+      <div class="slider-container">
+        <div class="slider" id="sliderOfertas">
+        </div>
+      </div>
+      <div class="slider-dots" id="sliderDots"></div>
+    </section>
+
+    <!-- ✅ CALEB: marcas -->
+    <section class="marcas-section" aria-label="Marcas disponibles">
+      <div class="marcas-header">
+        <h2>MARCAS</h2>
+        <span class="ver-mas" aria-hidden="true">›</span>
+      </div>
+
+      <div class="marcas-scroll-wrapper" id="marcasScroll">
+      </div>
+    </section>
+
+    <!-- Secciones de productos por categoría -->
+    <section aria-label="Productos por categoría">
+      <div id="seccionesProductos">
+        <!-- el JS pinta las secciones aquí -->
+      </div>
+      <p id="sinResultados" class="sin-resultados" style="display:none;">
+        No se encontraron productos.
+      </p>
+    </section>
+
+  </main>
+
+  <script src="js/libreria.js"></script>
+  <script src="js/index.js"></script>
+
+
+  <!-- MODAL PERSONALIZADO (reemplaza alert/confirm) -->
+</div>
+
+  <script src="js/modal.js"></script>
+
+  <!-- LIGHTBOX de banners -->
+  <div id="lightboxOverlay" role="dialog" aria-modal="true" aria-label="Vista ampliada de oferta">
+    <button id="lightboxClose" aria-label="Cerrar">✕</button>
+    <img id="lightboxImg" src="" alt="Oferta ampliada">
+  </div>
+</body>
+</html>

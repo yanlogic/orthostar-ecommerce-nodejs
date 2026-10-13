@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Carrito de compras de Orthostar.">
+  <title>Carrito — Orthostar</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles/estilo.css">
+  <link rel="stylesheet" href="styles/modal.css">
+  <link rel="stylesheet" href="styles/carrito.css">
+</head>
+<body>
+
+  <!-- NAVBAR con flecha volver y título centrado -->
+  <header class="navbar-producto" role="banner">
+    <button class="btn-back" onclick="history.back()" aria-label="Volver atrás">
+      <span aria-hidden="true">‹</span>
+    </button>
+    <h1>Carrito de compras</h1>
+  </header>
+
+  <main role="main">
+
+    <!-- Cabecera de la tabla -->
+    <div class="carrito-header">
+      <span>ARTÍCULOS</span>
+      <span>DESCRIPCIÓN</span>
+      <span>PRECIO</span>
+    </div>
+
+    <!-- Lista de productos -->
+    <section id="listadoCarrito" class="listado-carrito" aria-label="Productos en el carrito">
+      <!-- el JS pinta los items aquí -->
+    </section>
+
+    <!-- Mensaje cuando está vacío -->
+    <div id="carritoVacio" class="carrito-vacio" style="display:none;">
+      <p>Tu carrito está vacío.</p>
+      <button onclick="location.href='index.html'" class="btn-comprar">Ir a la tienda</button>
+    </div>
+
+    <!-- Botón comprar -->
+    <button id="btnComprar" class="btn-comprar" onclick="irACheckout()" aria-label="Proceder al pago">
+      Comprar ahora (S/0.00)
+    </button>
+
+  </main>
+
+  <script src="js/libreria.js"></script>
+  <script src="js/carrito.js"></script>
+
+
+  <!-- MODAL PERSONALIZADO (reemplaza alert/confirm) -->
+</div>
+
+  <script src="js/modal.js"></script>
+</body>
+</html>
